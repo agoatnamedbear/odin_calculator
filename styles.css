@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "digital7";
+  src: url(./fonts/digital-7.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "norwester";
+  src: url(./fonts/norwester.otf) format("opentype");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
