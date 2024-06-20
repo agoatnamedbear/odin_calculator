@@ -6,6 +6,9 @@ const decimal = document.querySelector(".decimal");
 const allClear = document.querySelector(".all-clear");
 const plusMinus = document.querySelector(".plus-minus");
 const percentage = document.querySelector(".percentage");
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -16,7 +19,8 @@ numberButtons.forEach((button) => {
 
 operatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
-    display.textContent = operator.textContent;
+    firstNumber = display.textContent;
+    display.textContent = firstNumber + operator.textContent;
   });
 });
 
@@ -25,13 +29,8 @@ allClear.addEventListener("click", () => {
 });
 
 const inputNumber = (number) => {
-  const screenNumber = display.innerHTML;
+  const screenNumber = display.textContent;
   if (screenNumber.length <= 10) {
     display.innerHTML += number;
-  }
-};
-
-const operate = (operator) => {
-  if (operator === "/") {
   }
 };
