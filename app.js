@@ -34,3 +34,7 @@ const inputNumber = (number) => {
     display.innerHTML += number;
   }
 };
+
+equals.addEventListener("click", () => {
+  calculate();
+});
