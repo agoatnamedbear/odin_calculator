@@ -30,6 +30,10 @@ button {
   border: 2.5px solid black;
 }
 
+button:hover {
+  background-color: #84c7d0;
+}
+
 .calculator {
   display: grid;
   grid-auto-columns: 100px;
@@ -60,4 +64,18 @@ button {
 
 .two-wide {
   grid-column: span 2;
+}
+
+.operator {
+  background-color: #9368b7;
+}
+
+.equals {
+  background-color: #aa3e98;
+}
+
+.all-clear,
+.plus-minus,
+.percentage {
+  background-color: #9297c4;
 }
