@@ -35,16 +35,16 @@ const inputNumber = (number) => {
   }
 };
 
-const calculate = (num1, operator, num2) => {
+const calculate = (firstNumber, operator, secondNumber) => {
   switch (operator) {
     case "+":
-      return num1 + num2;
+      return firstNumber + secondNumber;
     case "-":
-      return num1 - num2;
+      return firstNumber - secondNumber;
     case "*":
-      return num1 * num2;
+      return firstNumber * secondNumber;
     case "/":
-      return num1 / num2;
+      return firstNumber / secondNumber;
     default:
       return "Invalid operator";
   }
