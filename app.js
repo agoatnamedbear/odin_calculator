@@ -31,7 +31,6 @@ function calculator() {
         lastInputOperator = true;
         secondNumber = "";
       }
-      console.log(`Operator: ${operator}`);
     });
   });
 
@@ -54,8 +53,6 @@ function calculator() {
       if (screenNumber.length <= 10) {
         display.textContent += number;
         secondNumber = display.textContent;
-        console.log(`First Number: ${firstNumber}`);
-        console.log(`Second Number: ${secondNumber}`);
       }
     }
   };
@@ -63,8 +60,6 @@ function calculator() {
   const calculate = (firstNumber, operator, secondNumber) => {
     const num1 = parseFloat(firstNumber);
     const num2 = parseFloat(secondNumber);
-
-    console.log(`Operator: ${operator}`);
 
     switch (operator) {
       case "+":
