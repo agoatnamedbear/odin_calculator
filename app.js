@@ -40,21 +40,39 @@ function calculator() {
       button.disabled = false;
     });
     operatorButtons.forEach((button) => (button.disabled = false));
+    lastInputOperator = false;
+    plusMinus.disabled = false;
+    percentage.disabled = false;
   });
 
   plusMinus.addEventListener("click", () => {
-    if (firstNumber) {
-      firstNumber = -parseFloat(firstNumber);
-      display.textContent = firstNumber.toString();
+    const screenNumber = display.textContent;
+
+    if (screenNumber !== "" && screenNumber !== "0") {
+      display.textContent = parseFloat(screenNumber) * -1;
+      if (lastInputOperator) {
+        firstNumber = display.textContent;
+      } else {
+        secondNumber = display.textContent;
+      }
     }
   });
 
   decimal.addEventListener("click", () => {
-    if (lastInputOperator) {
-      display.textContent = "0.";
-      lastInputOperator = false;
-    } else if (!display.textContent.includes(".")) {
-      display.textContent += ".";
+    if (!display.textContent.includes(".")) {
+      if (lastInputOperator) {
+        display.textContent = ".";
+        lastInputOperator = false;
+      } else {
+        display.textContent += ".";
+      }
+    }
+  });
+
+  percentage.addEventListener("click", (number) => {
+    if (firstNumber || secondNumber) {
+      const result = (parseFloat(display.textContent) / 100).toString();
+      display.textContent = result;
     }
   });
 
@@ -66,14 +84,25 @@ function calculator() {
       lastInputOperator = false;
     }
 
-    if (screenNumber === "") {
+    if (
+      screenNumber === "" ||
+      (firstNumber === 0 && !screenNumber.includes("."))
+    ) {
       display.textContent = number;
       firstNumber = number;
-      plusMinus.disabled = false;
     } else {
       if (screenNumber.length <= 10) {
-        display.textContent += number;
-        secondNumber = display.textContent;
+        if (number === ".") {
+          display.textContent += number;
+          secondNumber = display.textContent;
+        } else {
+          display.textContent += number;
+          if (lastInputOperator) {
+            firstNumber = display.textContent;
+          } else {
+            secondNumber = display.textContent;
+          }
+        }
       }
     }
   };
@@ -93,10 +122,11 @@ function calculator() {
         return num1 * num2;
         break;
       case "/":
-        return num1 / num2;
+        const result = num1 / num2;
+        return Math.floor(result) === result ? result : result.toFixed(5);
         break;
       default:
-        throw new Error("Invalid operator: " + operator);
+        return "Invalid Operator!";
     }
   };
 
@@ -109,7 +139,7 @@ function calculator() {
       const result = calculate(firstNumber, operator, secondNumber);
       console.log(`Result: ${result}`);
       display.textContent = result.toString();
-      firstNumber = "";
+      firstNumber = result.toString();
       operator = "";
       secondNumber = "";
       lastInputOperator = false;
@@ -126,6 +156,10 @@ function calculator() {
         button.style.backgroundColor = "#9368b7";
         button.style.color = "black";
       });
+      plusMinus.disabled = true;
+      plusMinus.style.color = "black";
+      percentage.disabled = true;
+      percentage.style.color = "black";
     }
   });
 }
