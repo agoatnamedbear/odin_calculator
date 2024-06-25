@@ -36,6 +36,9 @@ function calculator() {
 
   allClear.addEventListener("click", () => {
     display.textContent = "";
+    numberButtons.forEach((button) => {
+      button.disabled = false;
+    });
   });
 
   const inputNumber = (number) => {
@@ -92,6 +95,12 @@ function calculator() {
       operator = "";
       secondNumber = "";
       lastInputOperator = false;
+    }
+    // Prevent further input after equals button is clicked
+    if (display.textContent !== "") {
+      numberButtons.forEach((button) => {
+        button.disabled = true;
+      });
     }
   });
 }
