@@ -43,6 +43,7 @@ function calculator() {
     lastInputOperator = false;
     plusMinus.disabled = false;
     percentage.disabled = false;
+    allClear.style.backgroundColor = "#9297c4";
   });
 
   plusMinus.addEventListener("click", () => {
@@ -160,6 +161,7 @@ function calculator() {
       plusMinus.style.color = "black";
       percentage.disabled = true;
       percentage.style.color = "black";
+      allClear.style.backgroundColor = "red";
     }
   });
 }
