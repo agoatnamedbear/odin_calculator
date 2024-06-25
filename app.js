@@ -39,6 +39,7 @@ function calculator() {
     numberButtons.forEach((button) => {
       button.disabled = false;
     });
+    operatorButtons.forEach((button) => (button.disabled = false));
   });
 
   const inputNumber = (number) => {
@@ -100,6 +101,13 @@ function calculator() {
     if (display.textContent !== "") {
       numberButtons.forEach((button) => {
         button.disabled = true;
+        button.style.backgroundColor = "white";
+        button.style.color = "black";
+      });
+      operatorButtons.forEach((button) => {
+        button.disabled = true;
+        button.style.backgroundColor = "#9368b7";
+        button.style.color = "black";
       });
     }
   });
