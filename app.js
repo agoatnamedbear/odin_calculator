@@ -49,6 +49,15 @@ function calculator() {
     }
   });
 
+  decimal.addEventListener("click", () => {
+    if (lastInputOperator) {
+      display.textContent = "0.";
+      lastInputOperator = false;
+    } else if (!display.textContent.includes(".")) {
+      display.textContent += ".";
+    }
+  });
+
   const inputNumber = (number) => {
     const screenNumber = display.textContent;
 
