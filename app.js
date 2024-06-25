@@ -42,6 +42,13 @@ function calculator() {
     operatorButtons.forEach((button) => (button.disabled = false));
   });
 
+  plusMinus.addEventListener("click", () => {
+    if (firstNumber) {
+      firstNumber = -parseFloat(firstNumber);
+      display.textContent = firstNumber.toString();
+    }
+  });
+
   const inputNumber = (number) => {
     const screenNumber = display.textContent;
 
@@ -53,6 +60,7 @@ function calculator() {
     if (screenNumber === "") {
       display.textContent = number;
       firstNumber = number;
+      plusMinus.disabled = false;
     } else {
       if (screenNumber.length <= 10) {
         display.textContent += number;
